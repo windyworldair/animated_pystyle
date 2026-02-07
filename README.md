@@ -18,8 +18,11 @@ pip install git+https://github.com/zalcus/animated_pystyle.git
 
 ## If you see `No matching distribution found for animated_pystyle`
 
-That means the package has not been uploaded to PyPI yet (or the version isn’t published yet).
-Use the GitHub install command above, or publish a release (see **Publish to PyPI**).
+That error means `animated_pystyle` is not published on PyPI yet (or your requested version is not published yet).
+
+Use one of these fixes:
+- Install from GitHub (`pip install git+https://github.com/zalcus/animated_pystyle.git`), or
+- Publish to PyPI using the steps below.
 
 ## Quick start
 
@@ -54,21 +57,37 @@ animator.animate(duration=2)
 
 ## Publish to PyPI
 
-This repo includes GitHub Actions workflow `.github/workflows/publish-pypi.yml` that builds and publishes on **GitHub Release published**.
+### Recommended: GitHub Actions Trusted Publishing
+
+This repo includes `.github/workflows/publish-pypi.yml`, which publishes automatically when you publish a GitHub Release.
 
 One-time setup:
-- Create a PyPI project named `animated_pystyle`.
-- Configure trusted publishing between your PyPI project and this GitHub repository.
+1. Create a project on PyPI named `animated_pystyle`.
+2. In PyPI project settings, configure **Trusted Publisher** for this GitHub repo:
+   - owner/repo: `zalcus/animated_pystyle`
+   - workflow file: `.github/workflows/publish-pypi.yml`
+   - environment (if required): `pypi`
+3. Ensure your GitHub repository has the `pypi` environment available.
 
-Then publish:
-1. Push your changes.
-2. Create and publish a GitHub Release/tag.
-3. The workflow uploads the package to PyPI.
-
-After that, users can run:
+Release steps:
+1. Push changes to GitHub.
+2. Create and publish a GitHub Release (tag like `v0.3.1`).
+3. GitHub Actions builds and uploads to PyPI.
+4. Verify with:
 
 ```bash
 pip install animated_pystyle
+```
+
+### Manual fallback (local upload)
+
+If you prefer manual publishing:
+
+```bash
+python -m pip install --upgrade build twine
+python -m build
+python -m twine check dist/*
+python -m twine upload dist/*
 ```
 
 ## Notes
