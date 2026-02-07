@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "animated_pystyle"
+version = "0.3.0"
+description = "Animated colored gradient text for ANSI terminals"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Zalcus" }
+]
+keywords = ["ansi", "terminal", "animation", "gradient", "text"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Terminals"
+]
+
+[project.urls]
+Homepage = "https://github.com/zalcus/animated_pystyle"
+Repository = "https://github.com/zalcus/animated_pystyle"
+Issues = "https://github.com/zalcus/animated_pystyle/issues"
+
+[tool.setuptools.packages.find]
+include = ["animated_pystyle*"]
